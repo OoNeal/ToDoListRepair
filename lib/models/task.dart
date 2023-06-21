@@ -1,10 +1,16 @@
 class Task {
   final int? id;
-  final String content;
+  String content;
   bool completed;
-  final String? title;
+  String? title;
 
   Task({this.id, required this.content, required this.completed, this.title});
 
   set setCompleted(bool value) => completed = value;
+
+  get getTitle => title;
+  set setTitle(String value) => title = value;
+
+  get getContent => content;
+  set setContent(String value) => content = value;
 }

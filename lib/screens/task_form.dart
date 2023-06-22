@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_list_v1/providers/tasks_provider.dart';
 
 import '../models/task.dart';
 
@@ -17,6 +19,8 @@ class _TaskFormState extends State<TaskForm> {
   @override
   void initState() {
     super.initState();
+    widget._titleController.text = '';
+    widget._contentController.text = '';
     if (widget.task != null) {
       widget._titleController.text = widget.task!.title!;
       widget._contentController.text = widget.task!.content;
@@ -59,13 +63,12 @@ class _TaskFormState extends State<TaskForm> {
             ElevatedButton(
               onPressed: () {
                 Task task = Task(
-                  id: widget.task?.id ?? -1,
+                  id: widget.task?.id,
                   title: widget._titleController.text,
                   content: widget._contentController.text,
                   completed: widget.task?.completed ?? false,
                 );
                 Navigator.of(context).pop(task);
-                print(task.id);
               },
               child: const Text('Save'),
             ),

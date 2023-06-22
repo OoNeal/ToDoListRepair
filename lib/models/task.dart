@@ -1,5 +1,5 @@
 class Task {
-  final int? id;
+  int? id;
   String content;
   bool completed;
   String? title;
@@ -13,4 +13,24 @@ class Task {
 
   get getContent => content;
   set setContent(String value) => content = value;
+
+  set setId(int value) => id = value;
+
+  static fromJson(task) {
+    return Task(
+      id: task['id'],
+      content: task['content'],
+      completed: task['completed'],
+      title: task['title'],
+    );
+  }
+
+  toJson() {
+    return {
+      'id': id,
+      'content': content,
+      'completed': completed,
+      'title': title,
+    };
+  }
 }
